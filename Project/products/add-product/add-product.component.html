@@ -1,0 +1,91 @@
+<div class="add-product-container">
+  <h2>Add New Product</h2>
+
+  <!-- Product Form -->
+  <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <div>
+      <label for="name">Product Name</label>
+      <input 
+        type="text" 
+        id="name" 
+        [(ngModel)]="product.name" 
+        name="name" 
+        required 
+        #name="ngModel" 
+        [ngClass]="{'invalid': name.invalid && name.touched}" />
+      <div *ngIf="name.invalid && name.touched" class="error-message">Name is required</div>
+    </div>
+
+    <div>
+      <label for="sku">SKU(Stock Keeping Unit):</label>
+      <input 
+        type="text" 
+        id="sku" 
+        [(ngModel)]="product.sku" 
+        name="sku" 
+        required 
+        #sku="ngModel" 
+        [ngClass]="{'invalid': sku.invalid && sku.touched}" />
+      <div *ngIf="sku.invalid && sku.touched" class="error-message">SKU is required</div>
+    </div>
+
+    <div>
+      <label for="description">Description</label>
+      <input 
+        type="text" 
+        id="description" 
+        [(ngModel)]="product.description" 
+        name="description" 
+        required 
+        #description="ngModel" 
+        [ngClass]="{'invalid': description.invalid && description.touched}" />
+      <div *ngIf="description.invalid && description.touched" class="error-message">Description is required</div>
+    </div>
+
+    <div>
+      <label for="price">Price</label>
+      <input 
+        type="number" 
+        id="price" 
+        [(ngModel)]="product.price" 
+        name="price" 
+        required 
+        #price="ngModel" 
+        [ngClass]="{'invalid': price.invalid && price.touched}" />
+      <div *ngIf="price.invalid && price.touched" class="error-message">Price is required</div>
+    </div>
+
+    <div>
+      <label for="stockQuantity">Stock Quantity</label>
+      <input 
+        type="number" 
+        id="stockQuantity" 
+        [(ngModel)]="product.stockQuantity" 
+        name="stockQuantity" 
+        required 
+        #stockQuantity="ngModel" 
+        [ngClass]="{'invalid': stockQuantity.invalid && stockQuantity.touched}" />
+      <div *ngIf="stockQuantity.invalid && stockQuantity.touched" class="error-message">Stock Quantity is required</div>
+    </div>
+
+    <div>
+      <label for="category">Category</label>
+      <input 
+        type="text" 
+        id="category" 
+        [(ngModel)]="product.category" 
+        name="category" 
+        required 
+        #category="ngModel" 
+        [ngClass]="{'invalid': category.invalid && category.touched}" />
+      <div *ngIf="category.invalid && category.touched" class="error-message">Category is required</div>
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+  </form>
+
+  <!-- Success/Error Message -->
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> <br>
+  <button class="dashboard-btn" (click)="goToDashboard()">Go to Dashboard</button>
+</div>
